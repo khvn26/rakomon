@@ -5,19 +5,19 @@ from . import settings, monitor
 
 
 class MonitorHandler(tornado.web.RequestHandler):
-    def initialize(self, monitor):
-        self.monitor = monitor.default()
+    def initialize(self, mon):
+        self.monitor = mon
 
     def get(self):
         self.write(self.monitor.values)
 
 
-def run(handler=MonitorHandler, monitor=monitor, config=settings.ENDPOINT_CONFIG.copy(), **kwargs):
+def run(handler=MonitorHandler, mon=monitor.default(), config=settings.ENDPOINT_CONFIG.copy(), **kwargs):
     config.update(kwargs)
 
     app = tornado.web.Application((
-        (config['url_path'], handler, dict(monitor=monitor))
+        (config['url_path'], handler, dict(monitor=mon)),
     ))
-    app.listen(config['port'], address=config['address']')
+    app.listen(config['port'], address=config['address'])
 
-    torando.ioloop.current().start()
+    tornado.ioloop.current().start()

@@ -10,7 +10,7 @@ def read(fname):
 
 setup(
     name = 'rakomon',
-    version = '0.0.1',
+    version = '0.1.2',
     author = 'Kim Gustyr',
     author_email = 'khvn26@gmail.com',
     description = 'Dead simple, configurable monitoring service based on tornado and apscheduler.',
@@ -21,7 +21,7 @@ setup(
     install_requires=[
         'APscheduler',
         'tornado'
-    ]
+    ],
     long_description=read('README.md'),
     classifiers=[
         'Development Status :: 3 - Alpha',

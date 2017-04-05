@@ -16,8 +16,8 @@ class Monitor(object):
     def __init__(self, scheduler=TornadoScheduler, config=settings.MONITOR_CONFIG.copy(), **kwargs):
         config.update(kwargs)
         self._config = config
-        if not issubclass(sheduler, BaseScheduler):
-            raise ValueError('Scheduler should be a subclass of BaseScheduler, not %s', type(scheduler).__name__)
+        if not issubclass(scheduler, BaseScheduler):
+            raise ValueError('Scheduler should be a subclass of BaseScheduler, not %s', repr(scheduler.__name__))
         self._values_store = dict()
         self._scheduler = scheduler()
         self._scheduler.add_listener(self._listener, EVENT_JOB_EXECUTED | EVENT_JOB_ERROR)
@@ -49,6 +49,7 @@ class Monitor(object):
             trigger='interval',
             seconds=self._config['metric_interval']
         )
+        return func
 
 
 def default(**kwargs):
