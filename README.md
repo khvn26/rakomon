@@ -1,5 +1,7 @@
-rakomon is designed for simplest, most stupid monitoring tasks when logging, caching, etc. isn't required.
-It simply encapsulates some of tornado and apscheduler functionality to run simple tasks periodically, store results in memory and serve them in application/json.
+![PyPI version](https://img.shields.io/pypi/v/rakomon.svg)
+
+rakomon is designed for simplest, most stupid monitoring tasks when logging, caching and other features of advanced monitoring solutions are not required.
+It encapsulates some of tornado and apscheduler functionality to run simple tasks periodically, store results in memory and serve them in application/json.
 You can use both monitor and endpoint modules to serve your metrics automagically, or instantiate the `monitor.Monitor` class on your own to use it however you see fit. 
 
 ### Disclaimer: though I use this code in my projects, it's rather raw. I set up this repository mainly to learn how to maintain an open-source project. It's up to you to evaluate if rakomon is production ready. 
